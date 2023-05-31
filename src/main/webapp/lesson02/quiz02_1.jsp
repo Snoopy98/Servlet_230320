@@ -17,7 +17,7 @@
 
 String type = request.getParameter("type");
 Date now = new Date(); // ZonedDateTime
-SimpleDateFormat sdf = null;
+SimpleDateFormat sdf;
 
 if(type.equals("time")){
 	//시간출력
@@ -25,9 +25,11 @@ if(type.equals("time")){
 
 }else{
 	//날짜 출력
-}
 	 sdf = new SimpleDateFormat("오늘의 날짜는 yyyy년 MM월 dd일 입니다.");
+}
+	
 String result = sdf.format(now);
+
 
 
 %>

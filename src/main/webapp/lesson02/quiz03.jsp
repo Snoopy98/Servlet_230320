@@ -10,20 +10,32 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container">
-<div class="text-center">
+<div class="d-flex">
+<div class="col-4"></div>
+
+<div class="col-8">
+<div>
 <h1>체격 조건 입력</h1>
 </div>
-
+	
 	<form method="get" action="/lesson02/quiz03_1.jsp">
-	<div class="form-group d-flex">
-	<input type="text" class="form-control col-2" name="height" placeholder="키를 입력하세요.">
-	<span class="mt-3">cm</span>
-	<input type="text" class="form-control col-2" name="weight" placeholder="몸무게를 입력하세요.">
-	<span class="mt-3">kg</span>
+	<div class="form-group d-flex ">
+	
+	<input type="text" class="form-control col-3" name="height" placeholder="키를 입력하세요.">
+	<div class="mt-3 mx-2">cm</div>
+	
+	
+	<input type="text" class="form-control col-3" name="weight" placeholder="몸무게를 입력하세요.">
+	<div class="mt-3 mx-2">kg</div>
+	
 	<input type="submit" class="btn btn-info" value="계산" >
-	</div>
+	
+	
+    </div>
+    </div>
 	</form>
+	
+	
 	
 
 </div>
