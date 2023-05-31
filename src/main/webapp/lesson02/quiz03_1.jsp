@@ -17,12 +17,28 @@ int height =  Integer.parseInt(heights);
 int weight =  Integer.parseInt(weights);
 
 double bmi = weight / ((height/100.0) * (height/100.0));
-
+out.print(bmi);
+String result = null;
 if(bmi <= 20 ){
-	out.print("저체중");
+ result = "저체중";
+	return;
 }else if(bmi >= 21 & bmi <= 25){
-	out.print("정상");
+	result = ("정상");
+	return;
+}else if(bmi >= 26 & bmi <= 30){
+	result = ("과체중");
+	return;
+}else if(bmi >= 31){
+	result = ("비만");
 }
 %>
+<!-- 화면  -->
+	<div class="container">
+	<b>BMI</b> 측정 결과<br>
+	<h1>당신은 <span class="text-info"><%= result %></span> 입니다.</h1>
+	<small>BMI 수치 : <%= bmi %></small>
+
+	</div>
+
 </body>
 </html>
