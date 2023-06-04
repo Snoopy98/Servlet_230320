@@ -10,8 +10,9 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </head>
+
 <body>
-	
+<div class="container">
 	<%
 	List<Map<String, Object>> list = new ArrayList<>();
     Map<String, Object> map = new HashMap<String, Object>() {
@@ -57,25 +58,27 @@
         } 
     };
     list.add(map);
+    int bookId =Integer.parseInt(request.getParameter("id"));
+    //int boi = Integer.parseInt(book.get("id").toString());
+    for(Map<String,Object> book : list){
+    	 int boi = Integer.parseInt(book.get("id").toString());
+    if(bookId == boi ){
+
+	%>
+	<div class="d-flex">
+		<img src="<%= book.get("image") %>" width="250" height="320">
+		<div>
+		<div class="display-3 font-weight-bold"><%= book.get("title") %></div>
+		<div class="display-4 text-info "><%= book.get("author") %></div>
+		<h1 class="text-secondary"><%= book.get("publisher") %></h1>
+		</div>
+	</div>
+	<%
+    }
+	}
     
-	String id = request.getParameter("id");
+	
 	%>
-	<div class="container">
-	<%
-	for(Map<String, Object> item : list){
-
-	if(item.get("id").equals(id)){
-		out.print(item.get("id"));
-	 %>
-	<h1>코스모스</h1>
-
-	<%
-	}
-	}
-	%>
-	
-	
-	
 	</div>
 </body>
 </html>
