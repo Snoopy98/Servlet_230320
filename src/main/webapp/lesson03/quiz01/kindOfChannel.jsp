@@ -5,11 +5,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
-</head>
+<title>채널 안내</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<style>
+#wrap{height:1000px;}
+header{height:50px;}
+.nav-link{color:white;}
+footer{height:30px;}
+</style>
+</head>
 <body>
 <%
     List<Map<String, String>> list = new ArrayList<>();
@@ -49,21 +55,61 @@
     list.add(map);
     map = new HashMap<String, String>() {{ put("ch", "121"); put("name", "KBSN 스포츠"); put("category", "스포츠"); } };
     list.add(map);
+    
+    String cat = request.getParameter("category");
 %>
-<% 
-
- String category = request.getParameter("category");
-
+<div id="wrap" class="container">
+		<header class="d-flex justify-content-center align-imems-center">
+		<jsp:include page="header.jsp"/>	
+		</header>
+		
+		<nav class="bg-danger d-flex align-items-center ">
+		<jsp:include page="nav.jsp"/>
+		</nav>
+		
+		<section class="contents">
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>채널</th>
+					<th>채널명</th>
+					<th>카테고리</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+			<%
+				for(Map<String,String> item : list){
+					if(item.get("category").equals(cat)){
+			%>
+				<tr>
+					<td><%= item.get("ch") %></td>
+					<td><%= item.get("name") %></td>
+					<td><%= item.get("category") %></td>
+				</tr>
+			<%
+					}else if(cat.equals("전체")){
+			%>      <tr>
+					<td><%= item.get("ch") %></td>
+					<td><%= item.get("name") %></td>
+					<td><%= item.get("category") %></td>
+				</tr> 
+						
+			<%
+					}
+				}
+		    %>
+			</tbody>
+		</table>
+		
+		</section>
+		
+		<footer class="d-flex justify-content-center align-imems-center">
+		<jsp:include page="footer.jsp"/>
+		</footer>
 	
-%>
-<div id=wrap class="container">
-<jsp:include page="header.jsp"></jsp:include>
-<jsp:include page="nav.jsp"></jsp:include>
+	</div>
+	</body>
 
-<section></section>
-<jsp:include page="footer.jsp"></jsp:include>
-
-
-</div>
 </body>
 </html>

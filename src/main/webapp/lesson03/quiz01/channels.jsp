@@ -13,7 +13,6 @@
 #wrap{height:1000px;}
 header{height:50px;}
 .nav-link{color:white;}
-.content{height:;}
 footer{height:30px;}
 </style>
 </head>
