@@ -61,9 +61,9 @@
     int bookId =Integer.parseInt(request.getParameter("id"));
     //int boi = Integer.parseInt(book.get("id").toString());
     for(Map<String,Object> book : list){
-    	 int boi = Integer.parseInt(book.get("id").toString());
-    if(bookId == boi ){
-
+    	 int bi = Integer.parseInt(book.get("id").toString());
+    if(bookId == bi ){
+	
 	%>
 	<div class="d-flex">
 		<img src="<%= book.get("image") %>" width="250" height="320">
