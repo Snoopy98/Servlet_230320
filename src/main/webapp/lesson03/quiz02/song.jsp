@@ -1,7 +1,8 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%    List<Map<String, Object>> musicList = new ArrayList<>();
+    
+<%  List<Map<String, Object>> musicList = new ArrayList<>();
 
 Map<String, Object> musicInfo = new HashMap<>();
 musicInfo.put("id", 1);
@@ -69,27 +70,35 @@ musicInfo.put("composer", "아이유,이종훈,이채규");
 musicInfo.put("lyricist", "아이유");
 musicList.add(musicInfo);
 %>    
-<table class="table">
-		<thead>
-			<tr class="text-center">
-				<th>no</th>
-				<th>제목</th>
-				<th>앨범</th>
-			</tr>
-		</thead>
-		<tbody>
-		<%
-		for(int i = 0; i < musicList.size(); i++){
-		musicInfo = musicList.get(i);
-		
-			%>
-			<tr class="text-center">
-				<td><%= i+1 %></td>
-				<td><a href="Detail.jsp?id=<%= musicInfo.get("id") %> "><%= musicInfo.get("title") %></a></td>
-				<td><%= musicInfo.get("album") %></td>
-			</tr>
-		<%
+    
+<h3 class="font-weight-bold mt-4">곡 목록</h3>
+<table class="table text-center">
+	<thead>
+		<tr>
+			<th>no</th>
+			<th>제목</th>
+			<th>앨범</th>
+		</tr>
+	</thead>
+	<tbody>
+	<%
+		for(Map<String,Object> music : musicList){
+			
+		%>
+		<tr>
+			<td><%= music.get("id") %></td>
+			<td><a href="/lesson03/quiz02/layout_1.jsp?id=<%= music.get("id") %>"><%= music.get("title") %></a></td>
+			<td><%= music.get("album") %></td>
+		</tr>
+	<%
 		}
-		%>	
-		</tbody>
-	</table>
+	%>	
+	</tbody>
+</table>
+
+
+
+
+
+
+
